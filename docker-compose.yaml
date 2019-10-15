@@ -11,8 +11,8 @@ services:
     build: ./sandbox-server
     ports:
       - "9999:9999"
-    volumes:
-      - ./sandbox-server:/go/src/sandbox-server
+    # volumes:
+    #   - ./sandbox-server:/go/src/sandbox-server
     container_name: "server"
 
   client:

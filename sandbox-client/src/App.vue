@@ -29,7 +29,7 @@ export default {
   },
   created: function () {
     // eslint-disable-next-line
-    this.client = new addNumServiceClient('http://localhost:8001', null, null)
+    this.client = new addNumServiceClient('http://192.168.99.100:8001', null, null)
     this.getTotalNum()
   },
   methods: {
@@ -38,16 +38,23 @@ export default {
       let getRequest = new getTotalNumParams()
       // eslint-disable-next-line
       this.client.getTotalNum(getRequest, {}, (err, response) => {
+        console.log('err', err)
+        console.log('response', response)
+
         this.num = response.toObject()
         console.log(this.num)
       })
     },
+
     addNum: function () {
       // eslint-disable-next-line
       let request = new addNumParams()
       request.setNumber(Number(this.inputField))
       // eslint-disable-next-line
       this.client.addNum(request, {}, (err, response) => {
+        console.log('err', err)
+        console.log('response', response)
+
         this.inputField = ''
         this.num = response.toObject()
       })
